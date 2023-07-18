@@ -11,26 +11,21 @@ class Txt2img(Resource):
     def post(self):
         request_json = request.json
         taskId = time.strftime('%Y%m%d%H%M%S', time.localtime(time.time()))
-        executor.submit(saveImageRun, request_json, taskId)
+        executor.submit(saveImage, request_json, taskId)
         return {
             'data': taskId,
             'code': 0
         }
 
 
-def saveImageRun(request_json, taskId):
-    asyncio.run(saveImage(request_json, taskId))
-
-
-async def saveImage(jsonData, taskId):
-    task = config.sdApi.txt2img(**jsonData, use_async=True)
-    while not task.done():
-        config.sdProgress[taskId] = config.sdApi.get_progress()
-        print('in saveImage loop', config.sdProgress[taskId]['progress'])
-        await asyncio.sleep(2)
-    result = await task
+def saveImage(jsonData, taskId):
+    print('==============saveImage===============', jsonData)
+    result = config.sdApi.txt2img(**jsonData)
     result.image.save('./static/' + taskId + '.jpeg')
-    config.sdProgress[taskId] = {
-        'progress': 1,
-        'url': 'http://192.168.50.156:7787/static/' + taskId + '.jpeg'
-    }
+    index = 0
+    print('result.image', result.image)
+    print('result.images', result.images)
+    for image in result.images:
+        print('image', image)
+        image.save('./static/' + taskId + '_' + str(index) + '.jpeg')
+        index = index + 1
