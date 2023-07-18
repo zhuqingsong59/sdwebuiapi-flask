@@ -23,7 +23,7 @@ class Txt2img(Resource):
         fileNameList = []
         for image in result.images:
             fileName = taskId + '_' + str(index) + '.jpeg'
-            image.save(fileName)
+            image.save('./static/' + fileName)
             fileNameList.append(fileName)
             index = index + 1
         config.sdProgress[taskId] = {
