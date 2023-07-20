@@ -1,9 +1,11 @@
+import json
 import config
 import base64
 from PIL import Image
 from io import BytesIO
 from flask import request
 from flask_restful import Resource
+from sdwebuiFn import parse_generation_parameters
 
 
 class PngInfo(Resource):
@@ -14,7 +16,7 @@ class PngInfo(Resource):
         result = config.sdApi.png_info(image)
         return {
             'data': {
-                'info': result.info,
+                'info': json.dumps(parse_generation_parameters(result.info)),
                 'parameters': result.parameters
             },
             'code': 0
