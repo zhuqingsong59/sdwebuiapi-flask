@@ -52,7 +52,7 @@ Steps: 20, Sampler: Euler a, CFG scale: 7, Seed: 965400086, Size: 512x512, Model
             prompt += ("" if prompt == "" else "\n") + line
 
     res["Prompt"] = prompt
-    res["Negative prompt"] = negative_prompt
+    res["Negative_prompt"] = negative_prompt
 
     for k, v in re_param.findall(lastline):
         try:
