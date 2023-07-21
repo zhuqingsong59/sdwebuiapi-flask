@@ -16,7 +16,7 @@ class PngInfo(Resource):
         result = config.sdApi.png_info(image)
         return {
             'data': {
-                'info': json.dumps(parse_generation_parameters(result.info)),
+                'info': parse_generation_parameters(result.info),
                 'parameters': result.parameters
             },
             'code': 0
