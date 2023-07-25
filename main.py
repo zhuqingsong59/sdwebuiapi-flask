@@ -6,6 +6,7 @@ from testApi import TestApi
 from progress import Progress
 from flask_restful import Api
 from getLoras import GetLoras
+from sdModels import GetModelsNames, GetCurrentModel, SetCurrentModel
 import config
 
 app = Flask(__name__)
@@ -17,6 +18,9 @@ api.add_resource(Img2img, '/img2img')
 api.add_resource(Progress, '/progress')
 api.add_resource(PngInfo, '/pngInfo')
 api.add_resource(GetLoras, '/getLoras')
+api.add_resource(GetModelsNames, '/getModelsNames')
+api.add_resource(GetCurrentModel, '/getCurrentModel')
+api.add_resource(SetCurrentModel, '/setCurrentModel')
 
 
 if __name__ == '__main__':
