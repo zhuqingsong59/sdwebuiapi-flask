@@ -8,6 +8,7 @@ from flask_restful import Api
 from getLoras import GetLoras
 from translate import Translate
 from sdModels import GetModelsNames, GetCurrentModel, SetCurrentModel
+from controlnet import CheckControlnet
 import config
 
 app = Flask(__name__)
@@ -23,6 +24,7 @@ api.add_resource(GetLoras, '/getLoras')
 api.add_resource(GetModelsNames, '/getModelsNames')
 api.add_resource(GetCurrentModel, '/getCurrentModel')
 api.add_resource(SetCurrentModel, '/setCurrentModel')
+api.add_resource(CheckControlnet, '/checkControlnet')
 
 
 if __name__ == '__main__':

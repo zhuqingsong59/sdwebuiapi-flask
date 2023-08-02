@@ -15,7 +15,6 @@ class GetModelsNames(Resource):
 class GetCurrentModel(Resource):
     def post(self):
         result = config.sdApi.util_get_current_model()
-        print('result: ', result)
         return {
             'data': result,
             'code': 0
