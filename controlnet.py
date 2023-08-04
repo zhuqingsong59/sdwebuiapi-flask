@@ -9,7 +9,6 @@ from flask_restful import Resource
 class GetModelList(Resource):
     def post(self):
         result = config.sdApi.controlnet_model_list()
-        print(result)
         return {
             'data': result,
             'code': 0
@@ -32,7 +31,6 @@ class GetDetect(Resource):
         img = Image.open(
             BytesIO(base64.b64decode(request_json['images'].split(',')[1])))
         result = config.sdApi.controlnet_detect(images=[img], module=module)
-        print(result)
         image_data = BytesIO()
         result.image.save(image_data, format='PNG')
         image_data_bytes = image_data.getvalue()

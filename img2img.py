@@ -24,6 +24,12 @@ class Img2img(Resource):
         img2imgParams['images'] = [Image.open(
             BytesIO(base64.b64decode(img2imgParams['images'].split(',')[1])))]
         img2imgParams['images'][0].save('./cache/' + taskId + '.png')
+        if 'controlnet_units' in img2imgParams:
+            controlNetUnit = img2imgParams['controlnet_units']
+            controlNetUnit['input_image'] = Image.open(
+                BytesIO(base64.b64decode(controlNetUnit['input_image'].split(',')[1])))
+            unit = config.webuiapi.ControlNetUnit(**controlNetUnit)
+            img2imgParams['controlnet_units'] = [unit]
         result = config.sdApi.img2img(**img2imgParams)
         index = 0
         fileNameList = []
