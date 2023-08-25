@@ -1,4 +1,2 @@
-1.inpaint
-2.lora
-3.Chinese prompt
-4.sd-webui-controlnet
+依赖库
+git clone https://github.com/Uminosachi/inpaint-anything.git

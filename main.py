@@ -9,6 +9,7 @@ from getLoras import GetLoras
 from translate import Translate
 from sdModels import GetModelsNames, GetCurrentModel, SetCurrentModel
 from controlnet import GetModelList, GetModuleList, GetDetect
+from inpaint import Segment
 import config
 
 app = Flask(__name__)
@@ -27,6 +28,7 @@ api.add_resource(SetCurrentModel, '/setCurrentModel')
 api.add_resource(GetModelList, '/getModelList')
 api.add_resource(GetModuleList, '/getModuleList')
 api.add_resource(GetDetect, '/getDetect')
+api.add_resource(Segment, '/segment')
 
 
 if __name__ == '__main__':
