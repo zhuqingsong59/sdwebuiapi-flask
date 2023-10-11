@@ -1,5 +1,5 @@
-# import webuiapi
-from sdwebuiApi.webuiapi import webuiapi
+import webuiapi
+# from sdwebuiApi.webuiapi import webuiapi
 
 sdApi = webuiapi.WebUIApi()
 
