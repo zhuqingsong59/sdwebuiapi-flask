@@ -36,6 +36,9 @@ class GetDetect(Resource):
         image_data_bytes = image_data.getvalue()
         encoded_image = base64.b64encode(image_data_bytes).decode('utf-8')
         return {
-            'data': encoded_image,
+            'data': {
+                'image': encoded_image,
+                'poses': result.poses
+            },
             'code': 0
         }
