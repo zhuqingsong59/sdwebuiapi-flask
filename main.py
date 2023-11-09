@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from txt2img import Txt2img
 from img2img import Img2img
 from pngInfo import PngInfo
@@ -13,6 +13,13 @@ from inpaint import Segment, Mask
 import config
 
 app = Flask(__name__)
+
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+
 api = Api(app)
 
 api.add_resource(TestApi, '/testApi')
@@ -33,4 +40,8 @@ api.add_resource(Mask, '/mask')
 
 
 if __name__ == '__main__':
+    app.config['WERKZEUG_WATCHDOG_IGNORE_DIRECTORIES'] = [
+        '/static',
+        '/templates'
+    ]
     app.run(debug=True, host=config.host, port=config.port)
