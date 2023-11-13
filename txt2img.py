@@ -34,12 +34,13 @@ class Txt2img(Resource):
         pnginfo_data.add_text('parameters', ''.join(result.info['infotexts']))
         for image in result.images:
             fileName = taskId + '_' + str(index) + '.png'
-            image.save('./static/' + fileName, pnginfo=pnginfo_data)
+            image.save('./static/outputs/txt2img/' +
+                       fileName, pnginfo=pnginfo_data)
             fileNameList.append(fileName)
             index = index + 1
         config.sdProgress[taskId] = {
             'progress': 1,
-            'urlList': list(map(lambda item: '/static/' + item, fileNameList))
+            'urlList': list(map(lambda item: '/static/outputs/txt2img/' + item, fileNameList))
         }
 
     # #  异步调用生成函数

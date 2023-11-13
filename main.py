@@ -10,6 +10,7 @@ from translate import Translate
 from sdModels import GetModelsNames, GetCurrentModel, SetCurrentModel
 from controlnet import GetModelList, GetModuleList, GetDetect
 from inpaint import Segment, Mask
+from segmentAnything import SegmentAnything
 import config
 
 app = Flask(__name__)
@@ -36,6 +37,7 @@ api.add_resource(GetModelList, '/getModelList')
 api.add_resource(GetModuleList, '/getModuleList')
 api.add_resource(GetDetect, '/getDetect')
 api.add_resource(Segment, '/segment')
+api.add_resource(SegmentAnything, '/segmentAnything')
 api.add_resource(Mask, '/mask')
 
 

@@ -12,11 +12,8 @@ node_modules
 coverage
 *.local
 
-/inpaint-anything
 /cypress/videos/
 /cypress/screenshots/
-/static
-/cache
 __pycache__
 # Editor directories and files
 .vscode/*
@@ -27,3 +24,4 @@ __pycache__
 *.njsproj
 *.sln
 *.sw?
+*.pth

@@ -24,9 +24,9 @@ class Segment(Resource):
         currentTime = time.strftime(
             '%Y%m%d%H%M%S', time.localtime(time.time()))
         Image.fromarray(seg_color_image).save(
-            './static/segment/' + currentTime + '.png')
+            './static/outputs/segment/' + currentTime + '.png')
         return {
-            'data': '/static/segment/' + currentTime + '.png',
+            'data': '/static/outputs/segment/' + currentTime + '.png',
             'code': 0
         }
 
@@ -43,7 +43,6 @@ class Mask(Resource):
 
         sketch_image = Image.open(
             BytesIO(base64.b64decode(request_json['sketch_image'].split(',')[1])))
-        sketch_image.save("sketch_image.png")
 
         mask_image = inpalib.create_mask_image(
             np.array(sketch_image), sam_masks, ignore_black_chk=True)
