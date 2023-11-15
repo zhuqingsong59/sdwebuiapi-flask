@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, send_from_directory
 from txt2img import Txt2img
 from img2img import Img2img
 from pngInfo import PngInfo
@@ -14,6 +14,11 @@ from segmentAnything import SegmentAnything
 import config
 
 app = Flask(__name__)
+
+
+@app.route('/<path:path>')
+def send_file(path):
+    return send_from_directory('templates', path)
 
 
 @app.route('/')
