@@ -6,7 +6,7 @@ from PIL import Image
 from io import BytesIO
 from flask import request
 from flask_restful import Resource
-from segmentAnythingLib.segment_anything import sam_model_registry, SamAutomaticMaskGenerator, SamPredictor
+from segmentAnythingLib.segment_anything import sam_model_registry, SamPredictor
 
 
 class SegmentAnything(Resource):
