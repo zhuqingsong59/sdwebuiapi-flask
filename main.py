@@ -11,6 +11,7 @@ from sdModels import GetModelsNames, GetCurrentModel, SetCurrentModel
 from controlnet import GetModelList, GetModuleList, GetDetect
 from inpaint import Segment, Mask
 from segmentAnything import SegmentAnything
+from segmentMask import SegmentMask
 from mergeMask import MergeMask
 import config
 
@@ -44,6 +45,7 @@ api.add_resource(GetModuleList, '/getModuleList')
 api.add_resource(GetDetect, '/getDetect')
 api.add_resource(Segment, '/segment')
 api.add_resource(SegmentAnything, '/segmentAnything')
+api.add_resource(SegmentMask, '/segmentMask')
 api.add_resource(Mask, '/mask')
 api.add_resource(MergeMask, '/mergeMask')
 
