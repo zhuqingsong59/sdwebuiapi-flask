@@ -13,6 +13,7 @@ from inpaint import Segment, Mask
 from segmentAnything import SegmentAnything
 from segmentMask import SegmentMask
 from mergeMask import MergeMask
+from comfy import Comfy
 import config
 
 app = Flask(__name__)
@@ -48,6 +49,7 @@ api.add_resource(SegmentAnything, '/segmentAnything')
 api.add_resource(SegmentMask, '/segmentMask')
 api.add_resource(Mask, '/mask')
 api.add_resource(MergeMask, '/mergeMask')
+api.add_resource(Comfy, '/comfy')
 
 
 if __name__ == '__main__':
